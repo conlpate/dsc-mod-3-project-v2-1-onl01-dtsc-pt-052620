@@ -206,16 +206,20 @@ Due to the distribution of scores for LogReg, our RFC (random forest classifier)
 - **F1 Score**: 60%
 
 ## Analysis and Future Steps
+
+#### Analysis
 1. Logistic Regression
     - Accuracy: 75%
     - F1 Score (macro average): 54%
     - **Highly imbalanced**, not a good fit for this data. 
 2. Decision Tree Classifier with FS, Gridsearch, and SMOTE
     - Accuracy: 69%
-    - F1 Score: 57%
+    - F1 Score (macro average): 57%
 3. Random Forest Classifier with Gridsearch, SMOTE, no FS
     - Accuracy: 67%
-    - F1 Score: 60%
+    - F1 Score (macro average): 60%
+    
+
     
 #### Future Steps 
 1. Expand data. 
@@ -231,11 +235,15 @@ Due to the distribution of scores for LogReg, our RFC (random forest classifier)
     - This is especially true running a gridsearch for the DTC and RFC models. 
 4. ROC/AUC
     - Need to further explore ROC/AUC scores for DTC and RFC. Need to further visualize the mean AUC scores of our high performing RFC models. 
+    
+#### Notes on the Models
+- While sampling has fixed much of our initial issues, our models are still imbalanced. We need to consider whether the provided data can accurately and comprehensively answer our initial question. 
+- A threshold across models should be put in place for future modeling. Set metrics for underperforming, average, and exceptional models to ease future tuning issues and questions. 
 
 
 
 ## Business Deliverables
-![Defund](/Users/conlp/FlatironWF/mod 3 project/final dataset and project selection/images/Screen Shot 2020-11-18 at 4.45.00 PM.png)
+![Defund](https://github.com/conlpate/dsc-mod-3-project-v2-1-onl01-dtsc-pt-052620/blob/master/images3/defund.png)
 
 1. Reallocation of funds for crisis response should be funneled toward those most in need. Young men, women of all ages, Asian Americans, Black women. 
 2. Different regions require different support strategies. Larger urban areas could benefit from a more nuanced crisis approach. 
