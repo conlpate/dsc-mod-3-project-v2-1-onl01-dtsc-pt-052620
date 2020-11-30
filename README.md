@@ -172,24 +172,65 @@ Due to the distribution of scores for LogReg, our RFC (random forest classifier)
 
 ## Best Models (FS and SMOTE)
 
-#### Decision Tree Classifier
+#### Decision Tree Classifier (Best with SMOTE and FS)
 
-### Final Accuracy Score
+![bestDTC](https://github.com/conlpate/dsc-mod-3-project-v2-1-onl01-dtsc-pt-052620/blob/master/images3/best%20DTC.png)
+
+- After using feature selection prior to our gridsearch and oversampling our target class, our DTC model is doing much better. 
+
+![bestDTCsc](https://github.com/conlpate/dsc-mod-3-project-v2-1-onl01-dtsc-pt-052620/blob/master/images3/best%20DTC%20and%20methods.png)
+
+- Compared to the other methods of tuning we've employed on our DTC models, our best scores are achieved using the above methods. While our accuracy has gone down, our balance issues have been addressed; however, more can be done. We're still underperforming with our target class. 
+- **Accuracy**: 69%
+- **F1 Score**: 57%
+
+#### Random Forest Classifier (Best with SMOTE, no FS)
+
+![rocrfcsmote](https://github.com/conlpate/dsc-mod-3-project-v2-1-onl01-dtsc-pt-052620/blob/master/images3/best%20RFC%20auc.png)
+
+- As we can see, an initial examination of our RFC SMOTE model gives us our best AUC score to date. 
+- Checking the mean, we get an even higher score. 
+
+![rocrfcmean](https://github.com/conlpate/dsc-mod-3-project-v2-1-onl01-dtsc-pt-052620/blob/master/images3/rfc%20auc.png)
+
+- This is miles ahead of our previous AUC scores. While our best performing model isn't the model with the highest AUC score (more below), it's good to note our RFC is doing much better. 
+
+![rfccm](https://github.com/conlpate/dsc-mod-3-project-v2-1-onl01-dtsc-pt-052620/blob/master/images3/best%20rfc%20CM.png)
+
+- Much better! More balanced all around. Still not ideal. 
+
+![rfcscor](https://github.com/conlpate/dsc-mod-3-project-v2-1-onl01-dtsc-pt-052620/blob/master/images3/best%20RFC%20and%20methods.png)
+
+- As we can see, our RFC model with SMOTE (no FS) is giving us our best metrics. 
+- **Accuracy**: 67%
+- **F1 Score**: 60%
+
+## Analysis and Future Steps
 1. Logistic Regression
     - Accuracy: 75%
-2. Decision Tree Classifier 
-    - Accuracy: 76%
-3. Random Forest Classifier 
-    - Accuracy: 61%
-
-### Our models need some help predicting MI True cases, but our overall accuracy scores for our LogReg and DTC models show promise. 
-
-#### Future Steps for Modeling
-1. Balance 
-    - Prior to passing in "balanced_subsample" for our RFC's class weight, our confusion matrix was completely imbalanced. Passing "balanced" improved matters slightly, but did not help as much as the "balanced_subsample" assignment. 
-    - Across the board, our precision and recall scores need to be improved for "true" instances of mental illness. 
-2. ROC/AUC
-    - Need to further explore ROC/AUC scores for DTC and RFC
+    - F1 Score (macro average): 54%
+    - **Highly imbalanced**, not a good fit for this data. 
+2. Decision Tree Classifier with FS, Gridsearch, and SMOTE
+    - Accuracy: 69%
+    - F1 Score: 57%
+3. Random Forest Classifier with Gridsearch, SMOTE, no FS
+    - Accuracy: 67%
+    - F1 Score: 60%
+    
+#### Future Steps 
+1. Expand data. 
+    - While adding in regions and divisions has eased project visualization, the added data doesn't address our imbalance issues. We need more data on casualties suffering from mental illness. 
+    - Expand the time range? 
+    - Build a new dataset taking information from local and state datasets? 
+2. Balance and Fit
+    - Oversampling our target class has improved our metrics, but could more be done by undersampling our features?
+    - Across the board, our F1 scores could be improved. Is this possible with our current data? 
+    - Our best performing model, RFC with SMOTE (no FS) is currently overfitting. More work needs to be done to minimize fit issues. 
+3. Model Efficiency 
+    - At this moment, our models take quite a bit of time to run. Using a proportioned selection of the data will improve processing time and, depending on the method, may assist with our sampling issue. 
+    - This is especially true running a gridsearch for the DTC and RFC models. 
+4. ROC/AUC
+    - Need to further explore ROC/AUC scores for DTC and RFC. Need to further visualize the mean AUC scores of our high performing RFC models. 
 
 
 
